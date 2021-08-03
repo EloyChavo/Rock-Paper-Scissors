@@ -9,11 +9,76 @@
     <body>
         <script>
             var game_options = ["Rock", "Paper", "Scissors"]
+            let user_score = 0;
+            let pc_score = 0;
+
             function computerPlay(){
                 random_Element = game_options[Math.floor(Math.random() * game_options.length)];
-                alert(random_Element)
+                return random_Element
             }
-            computerPlay();
+            
+            function user_Play() {
+                random_Element = game_options[Math.floor(Math.random() * game_options.length)];
+                return random_Element
+            }
+
+            function check_result(userPlay, computerPlay) {
+                if (userPlay === computerPlay) {
+                    alert("TIed Game");
+                }
+                else if (userPlay === "Scissors" && computerPlay === "Paper") {
+                    alert(`You win! ${userPlay} beats ${computerPlay}`);
+
+                }
+                else {
+                    if (userPlay === "Paper" && computerPlay === "Rock") {
+                        alert(`You win! ${userPlay} beats ${computerPlay}`);
+                    }
+                    else {
+                        if (userPlay === "Rock" && computerPlay === "Scissors") {
+                            alert(`You win! ${userPlay} beats ${computerPlay}`)
+                        }
+                        else {
+                            alert(`You lose! ${computerPlay} beats ${userPlay} `)
+                            const lose_result = "PC"
+                                return lose_result
+                        }      
+                    }
+                }
+            }
+
+            function playRound() {
+                const user_choice = user_Play();
+                const computer_choice = computerPlay();
+                const result = check_result(user_choice, computer_choice);
+                return result 
+            }
+
+            
+            function game() {
+                let result = playRound();
+                if (result == "PC") {
+                    pc_score += 1;
+                }
+                else {
+                    user_score += 1;
+                }
+            }
+
+            let is_game_on = true;
+            while (is_game_on = true) {
+                game();
+
+                if (user_score == 5 || pc_score == 5) {
+                    is_game_on = false;
+                    break;
+                }
+
+                alert(pc_score);
+                alert(playRound());
+            }
+
+            
 
 
 
